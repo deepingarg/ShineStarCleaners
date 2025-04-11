@@ -4,17 +4,23 @@ interface FeatureProps {
   icon: string;
   title: string;
   description: string;
+  count?: string;
 }
 
-const Feature: React.FC<FeatureProps> = ({ icon, title, description }) => {
+const Feature: React.FC<FeatureProps> = ({ icon, title, description, count }) => {
   return (
-    <div className="flex items-start">
-      <div className="bg-white p-2 rounded-full shadow-md mr-4">
-        <i className={`${icon} text-primary text-xl`}></i>
-      </div>
-      <div>
-        <h3 className="text-xl font-bold font-poppins">{title}</h3>
-        <p className="text-gray-600">{description}</p>
+    <div className="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+      <div className="flex items-start">
+        <div className="bg-primary/10 p-3 rounded-lg mr-4">
+          <i className={`${icon} text-primary text-2xl`}></i>
+        </div>
+        <div>
+          {count && (
+            <span className="text-3xl sm:text-4xl font-bold text-gray-900 block mb-1">{count}</span>
+          )}
+          <h3 className="text-xl font-bold font-poppins">{title}</h3>
+          <p className="text-gray-600 mt-2">{description}</p>
+        </div>
       </div>
     </div>
   );
@@ -24,58 +30,154 @@ const About: React.FC = () => {
   const features = [
     {
       icon: "fas fa-users",
-      title: "250+ Professional Staff",
-      description: "Fully trained and vetted cleaning professionals"
+      title: "Professional Staff",
+      count: "250+",
+      description: "Fully trained and vetted cleaning professionals ready to serve you"
     },
     {
       icon: "fas fa-thumbs-up",
-      title: "30,000+ Satisfied Clients",
-      description: "Years of experience serving homes and businesses"
+      title: "Satisfied Clients",
+      count: "30k+",
+      description: "Years of experience serving homes and businesses across New Zealand"
     },
     {
       icon: "fas fa-leaf",
       title: "Eco-Friendly Solutions",
-      description: "Environmentally responsible cleaning products"
+      description: "We use environmentally responsible cleaning products and methods"
     },
     {
       icon: "fas fa-map-marker-alt",
-      title: "Local New Zealand Business",
-      description: "Supporting local communities across the country"
+      title: "Local NZ Business",
+      description: "Supporting local communities across the country since 2010"
     },
     {
       icon: "fas fa-bolt",
-      title: "Same-Day Service Available",
-      description: "Quick response for your urgent cleaning needs"
+      title: "Same-Day Service",
+      description: "Quick response for your urgent cleaning needs, 7 days a week"
+    },
+    {
+      icon: "fas fa-shield-alt",
+      title: "Insured & Bonded",
+      description: "Your property is fully protected while in our care"
     }
   ];
 
   return (
-    <section id="about" className="py-16 md:py-24 bg-light">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-            <img 
-              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&h=600" 
-              alt="Professional cleaner" 
-              className="rounded-lg shadow-xl"
+    <section id="about" className="py-16 md:py-28 bg-light relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute -top-32 -right-32 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+      <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <span className="bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-3 inline-block">
+            ABOUT US
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 font-poppins mb-6">
+            Why Choose <span className="text-gradient">ShineStar Cleaners</span>?
+          </h2>
+          <p className="text-lg text-gray-700">
+            At ShineStar Cleaners, we're committed to delivering exceptional cleaning services that exceed your expectations. 
+            Our professional team uses eco-friendly products and state-of-the-art equipment to provide a thorough clean every time.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {features.map((feature, index) => (
+            <Feature 
+              key={index}
+              icon={feature.icon}
+              title={feature.title}
+              description={feature.description}
+              count={feature.count}
             />
+          ))}
+        </div>
+        
+        <div className="flex flex-col lg:flex-row items-center bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div className="lg:w-1/2 relative">
+            <img 
+              src="https://images.unsplash.com/photo-1627905646269-7f034dcc7987?auto=format&fit=crop&w=800&h=600" 
+              alt="Professional cleaning team" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/60 to-primary/20 flex items-center justify-center">
+              <a 
+                href="#contact" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white text-3xl hover:bg-white/30 transition-all"
+              >
+                <i className="fas fa-play"></i>
+              </a>
+            </div>
           </div>
           
-          <div className="md:w-1/2">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-poppins mb-6">Why ShineStar Cleaners?</h2>
-            <p className="text-lg text-gray-700 mb-8">
-              At ShineStar Cleaners, we're committed to delivering exceptional cleaning services that exceed your expectations. Our professional team uses eco-friendly products and state-of-the-art equipment to provide a thorough clean every time.
-            </p>
+          <div className="lg:w-1/2 p-8 md:p-12">
+            <h3 className="text-2xl md:text-3xl font-bold font-poppins mb-6">Our Cleaning Process</h3>
             
-            <div className="space-y-4">
-              {features.map((feature, index) => (
-                <Feature 
-                  key={index}
-                  icon={feature.icon}
-                  title={feature.title}
-                  description={feature.description}
-                />
-              ))}
+            <div className="space-y-6">
+              <div className="flex">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                  <span className="text-primary font-bold">1</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg mb-1">Assessment</h4>
+                  <p className="text-gray-600">We begin with a thorough assessment of your space to identify specific cleaning needs.</p>
+                </div>
+              </div>
+              
+              <div className="flex">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                  <span className="text-primary font-bold">2</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg mb-1">Customized Plan</h4>
+                  <p className="text-gray-600">Our team creates a tailored cleaning plan specific to your property's requirements.</p>
+                </div>
+              </div>
+              
+              <div className="flex">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                  <span className="text-primary font-bold">3</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg mb-1">Professional Execution</h4>
+                  <p className="text-gray-600">Our trained professionals execute the cleaning plan with attention to detail and care.</p>
+                </div>
+              </div>
+              
+              <div className="flex">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                  <span className="text-primary font-bold">4</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg mb-1">Quality Check</h4>
+                  <p className="text-gray-600">We conduct a final inspection to ensure everything meets our high standards of cleanliness.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-8">
+              <a 
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="btn-primary"
+              >
+                <span>Book a Cleaning</span>
+                <i className="fas fa-arrow-right ml-2"></i>
+              </a>
             </div>
           </div>
         </div>

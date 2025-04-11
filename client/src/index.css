@@ -9,5 +9,53 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    scroll-behavior: smooth;
+  }
+
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent;
+  }
+  
+  .bg-light {
+    @apply bg-gray-50;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary rounded-full hover:bg-primary/90 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+  }
+
+  .img-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-70;
+  }
+
+  .service-card {
+    @apply bg-white rounded-xl shadow-md p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 overflow-hidden relative;
+  }
+
+  .service-card::after {
+    content: '';
+    @apply absolute bottom-0 left-0 right-0 h-1 bg-primary transform scale-x-0 transition-transform duration-300 origin-left;
+  }
+
+  .service-card:hover::after {
+    @apply scale-x-100;
   }
 }
