@@ -89,6 +89,18 @@ const Header: React.FC = () => {
               About
             </a>
             <a 
+              href="#gallery" 
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('gallery');
+              }}
+              className={`font-medium px-3 py-2 rounded-md hover:bg-primary/10 transition-colors ${
+                scrolled ? 'text-gray-800 hover:text-primary' : 'text-white hover:text-white'
+              }`}
+            >
+              Gallery
+            </a>
+            <a 
               href="#contact" 
               onClick={(e) => {
                 e.preventDefault();
@@ -165,6 +177,17 @@ const Header: React.FC = () => {
               >
                 <i className="fas fa-info-circle mr-3 w-6 text-primary"></i>
                 About
+              </a>
+              <a 
+                href="#gallery" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('gallery');
+                }}
+                className="text-gray-800 font-medium py-3 hover:bg-primary/10 hover:text-primary px-3 rounded-lg flex items-center"
+              >
+                <i className="fas fa-images mr-3 w-6 text-primary"></i>
+                Gallery
               </a>
               <a 
                 href="#contact" 

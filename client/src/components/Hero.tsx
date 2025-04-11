@@ -23,19 +23,20 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-7/12 text-white mb-12 md:mb-0">
-            <span className="inline-block text-sm font-bold tracking-wider uppercase bg-primary/20 border border-primary/30 rounded-full px-4 py-1 mb-6">
+            <span className="inline-block text-sm font-bold tracking-wider uppercase bg-primary/20 border border-primary/30 rounded-full px-4 py-1 mb-6 animate-fade-in">
               Professional & Reliable
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-poppins mb-6 leading-tight">
-              <span className="text-gradient">Premium Cleaning</span> Services in New Zealand
+              <span className="text-gradient animate-slide-in-left">Premium Cleaning</span> 
+              <span className="animate-slide-in-right delay-100">Services in New Zealand</span>
             </h1>
-            <p className="text-xl text-gray-200 mb-8 max-w-2xl">
+            <p className="text-xl text-gray-200 mb-8 max-w-2xl animate-fade-in delay-200">
               Trusted by thousands of homes and businesses across the country for spotless results and exceptional service, delivered by 250+ trained professionals.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 animate-slide-up delay-300">
               <button 
                 onClick={scrollToContact}
-                className="btn-primary"
+                className="btn-primary animate-pulse-slow"
               >
                 <span>Get a Free Quote</span>
                 <i className="fas fa-arrow-right ml-2"></i>
@@ -93,8 +94,11 @@ const Hero: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <select className="w-full bg-white/20 text-white border border-gray-200/20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
-                    <option value="" disabled selected className="text-gray-400">Select Service</option>
+                  <select 
+                    defaultValue="" 
+                    className="w-full bg-white/20 text-white border border-gray-200/20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
+                    <option value="" disabled className="text-gray-400">Select Service</option>
                     <option value="office" className="text-gray-800">Office Cleaning</option>
                     <option value="home" className="text-gray-800">Home Cleaning</option>
                     <option value="carpet" className="text-gray-800">Carpet Cleaning</option>
@@ -118,20 +122,20 @@ const Hero: React.FC = () => {
         
         {/* Trust Indicators */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-          <div className="bg-white/10 backdrop-blur-sm p-5 rounded-xl shadow-lg border border-white/20 card-hover">
-            <i className="fas fa-award text-primary text-3xl mb-3"></i>
+          <div className="bg-white/10 backdrop-blur-sm p-5 rounded-xl shadow-lg border border-white/20 card-hover animate-slide-up delay-100">
+            <i className="fas fa-award text-primary text-3xl mb-3 animate-bounce-slow"></i>
             <p className="font-medium text-white">Top Rated Service</p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm p-5 rounded-xl shadow-lg border border-white/20 card-hover">
-            <i className="fas fa-clock text-primary text-3xl mb-3"></i>
+          <div className="bg-white/10 backdrop-blur-sm p-5 rounded-xl shadow-lg border border-white/20 card-hover animate-slide-up delay-200">
+            <i className="fas fa-clock text-primary text-3xl mb-3 animate-bounce-slow"></i>
             <p className="font-medium text-white">Fast Response</p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm p-5 rounded-xl shadow-lg border border-white/20 card-hover">
-            <i className="fas fa-leaf text-primary text-3xl mb-3"></i>
+          <div className="bg-white/10 backdrop-blur-sm p-5 rounded-xl shadow-lg border border-white/20 card-hover animate-slide-up delay-300">
+            <i className="fas fa-leaf text-primary text-3xl mb-3 animate-bounce-slow"></i>
             <p className="font-medium text-white">Eco-Friendly</p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm p-5 rounded-xl shadow-lg border border-white/20 card-hover">
-            <i className="fas fa-shield-alt text-primary text-3xl mb-3"></i>
+          <div className="bg-white/10 backdrop-blur-sm p-5 rounded-xl shadow-lg border border-white/20 card-hover animate-slide-up delay-400">
+            <i className="fas fa-shield-alt text-primary text-3xl mb-3 animate-bounce-slow"></i>
             <p className="font-medium text-white">Fully Insured</p>
           </div>
         </div>
