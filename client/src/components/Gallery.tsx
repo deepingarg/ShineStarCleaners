@@ -1,31 +1,31 @@
 import React, { useState } from 'react';
-import Slideshow from './Slideshow';
+import Slideshow from './Slideshow2';
 
 const Gallery: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState('before-after');
   
   // Collection of before and after transformation images
   const beforeAfterImages = [
-    "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1200&h=800",
-    "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&w=1200&h=800",
-    "https://images.unsplash.com/photo-1596204976717-1a9ff47f74ef?auto=format&fit=crop&w=1200&h=800",
-    "https://images.unsplash.com/photo-1631501158226-1db81e7db208?auto=format&fit=crop&w=1200&h=800",
+    "https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg?auto=compress&cs=tinysrgb&h=800",
+    "https://images.pexels.com/photos/4108742/pexels-photo-4108742.jpeg?auto=compress&cs=tinysrgb&h=800",
+    "https://images.pexels.com/photos/5591488/pexels-photo-5591488.jpeg?auto=compress&cs=tinysrgb&h=800",
+    "https://images.pexels.com/photos/4108737/pexels-photo-4108737.jpeg?auto=compress&cs=tinysrgb&h=800"
   ];
   
   // Collection of team at work images
   const teamImages = [
-    "https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?auto=format&fit=crop&w=1200&h=800",
-    "https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1200&h=800",
-    "https://images.unsplash.com/photo-1556911220-bda9f7f37446?auto=format&fit=crop&w=1200&h=800",
-    "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&h=800"
+    "https://images.pexels.com/photos/4108731/pexels-photo-4108731.jpeg?auto=compress&cs=tinysrgb&h=800",
+    "https://images.pexels.com/photos/4108727/pexels-photo-4108727.jpeg?auto=compress&cs=tinysrgb&h=800",
+    "https://images.pexels.com/photos/4108834/pexels-photo-4108834.jpeg?auto=compress&cs=tinysrgb&h=800",
+    "https://images.pexels.com/photos/5591580/pexels-photo-5591580.jpeg?auto=compress&cs=tinysrgb&h=800"
   ];
   
   // Collection of equipment images
   const equipmentImages = [
-    "https://images.unsplash.com/photo-1603712698128-8975defca0f9?auto=format&fit=crop&w=1200&h=800",
-    "https://images.unsplash.com/photo-1584820923393-a75121d13225?auto=format&fit=crop&w=1200&h=800",
-    "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=1200&h=800",
-    "https://images.unsplash.com/photo-1551448215-25d19f16f3b8?auto=format&fit=crop&w=1200&h=800"
+    "https://images.pexels.com/photos/4108765/pexels-photo-4108765.jpeg?auto=compress&cs=tinysrgb&h=800",
+    "https://images.pexels.com/photos/4108770/pexels-photo-4108770.jpeg?auto=compress&cs=tinysrgb&h=800",
+    "https://images.pexels.com/photos/4108718/pexels-photo-4108718.jpeg?auto=compress&cs=tinysrgb&h=800",
+    "https://images.pexels.com/photos/5591511/pexels-photo-5591511.jpeg?auto=compress&cs=tinysrgb&h=800"
   ];
   
   const beforeAfterCaptions = [
@@ -142,6 +142,9 @@ const Gallery: React.FC = () => {
                 src={image} 
                 alt={captions[index]} 
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                onError={(e) => {
+                  e.currentTarget.src = "https://placehold.co/600x600/e2e8f0/64748b?text=Image+Unavailable";
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex flex-col justify-end p-4">
                 <p className="text-white font-medium text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100">
