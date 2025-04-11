@@ -54,16 +54,28 @@ const ContactForm: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // In a real implementation, you would send this data to the server
-      console.log("Form submitted:", data);
+      // Create email content from form data
+      const subject = `New inquiry from ${data.name} - ShineStar Cleaners`;
+      const messageBody = `
+Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone || 'Not provided'}
+Service: ${data.service || 'Not specified'}
+
+Message:
+${data.message}
+      `.trim();
       
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Format the mailto link with encoded parameters
+      const mailtoLink = `mailto:info@shinestarcleaners.online?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(messageBody)}`;
+      
+      // Open email client
+      window.location.href = mailtoLink;
       
       // Show success message
       toast({
-        title: "Message Sent",
-        description: "We'll be in touch with you shortly!",
+        title: "Email Client Opened",
+        description: "Please send the pre-filled email to complete your inquiry.",
         duration: 5000,
       });
       
@@ -71,14 +83,18 @@ const ContactForm: React.FC = () => {
       reset();
       setFormSubmitted(true);
       
+      // Clear chatbot data from localStorage
+      localStorage.removeItem('chatbot_form_data');
+      
       // Hide success message after 5 seconds
       setTimeout(() => {
         setFormSubmitted(false);
       }, 5000);
     } catch (error) {
+      console.error("Error processing form:", error);
       toast({
         title: "Error",
-        description: "There was a problem sending your message. Please try again.",
+        description: "There was a problem processing your message. Please try again or contact us directly.",
         variant: "destructive",
         duration: 5000,
       });
@@ -319,8 +335,9 @@ const ContactForm: React.FC = () => {
                       <i className="fas fa-check text-green-500 text-xl"></i>
                     </div>
                     <div>
-                      <h4 className="font-bold text-green-800 mb-1">Message Sent Successfully!</h4>
-                      <p>Thank you for contacting us. We'll be in touch with you shortly.</p>
+                      <h4 className="font-bold text-green-800 mb-1">Your Email Client Is Ready!</h4>
+                      <p>Your form has been processed. Please send the pre-filled email that opened in your email client to complete your inquiry.</p>
+                      <p className="mt-2 text-sm">If your email client didn't open, please <a href="mailto:info@shinestarcleaners.online" className="text-primary font-medium hover:underline">email us directly</a> or call us at <a href="tel:02040161664" className="text-primary font-medium hover:underline">02040161664</a>.</p>
                     </div>
                   </div>
                 </div>

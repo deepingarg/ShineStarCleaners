@@ -120,14 +120,27 @@ const ChatBot: React.FC<ChatBotProps> = ({ onFormFieldChange }) => {
       return;
     }
 
-    // Process form fields and inform parent component
+    // Process form fields and store in localStorage for form pre-filling
     const currentField = steps[currentStep].field;
-    if (currentField && onFormFieldChange && currentStep < steps.length - 1) {
+    if (currentField && currentStep < steps.length - 1) {
       // Skip updating for the "I'd rather not provide" option for phone
       if (currentField === "phone" && text === "I'd rather not provide my phone number") {
         // Don't update the field
       } else {
-        onFormFieldChange(currentField, text);
+        // Save to localStorage for form pre-filling
+        try {
+          const existingData = localStorage.getItem('chatbot_form_data');
+          const formData = existingData ? JSON.parse(existingData) : {};
+          formData[currentField] = text;
+          localStorage.setItem('chatbot_form_data', JSON.stringify(formData));
+          
+          // Also inform parent component if callback exists
+          if (onFormFieldChange) {
+            onFormFieldChange(currentField, text);
+          }
+        } catch (error) {
+          console.error("Error saving form data to localStorage:", error);
+        }
       }
     }
 
@@ -152,10 +165,10 @@ const ChatBot: React.FC<ChatBotProps> = ({ onFormFieldChange }) => {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {isOpen && (
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden w-80 sm:w-96 mb-4 border border-gray-200 max-h-[500px] flex flex-col">
+        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden w-[90vw] max-w-sm mb-4 border border-gray-200 flex flex-col fixed bottom-20 right-4 left-4 sm:left-auto sm:w-96 sm:relative sm:bottom-auto animate-fade-in">
           <div className="bg-primary p-4 text-white flex justify-between items-center">
             <div className="flex items-center">
-              <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary mr-2">
+              <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary mr-2 animate-bounce-slow">
                 <i className="fas fa-robot"></i>
               </div>
               <h3 className="font-bold">ShineBot Assistance</h3>
@@ -168,17 +181,17 @@ const ChatBot: React.FC<ChatBotProps> = ({ onFormFieldChange }) => {
             </button>
           </div>
           
-          <div className="flex-1 overflow-y-auto p-4 bg-gray-50 min-h-[300px] max-h-[350px]">
+          <div className="flex-1 overflow-y-auto p-4 bg-gray-50 min-h-[300px] max-h-[350px] sm:max-h-[400px]">
             {messages.map(message => (
               <div 
                 key={message.id} 
                 className={`mb-3 flex ${message.isBot ? "justify-start" : "justify-end"}`}
               >
                 <div 
-                  className={`p-3 rounded-lg max-w-[80%] ${
+                  className={`p-3 rounded-lg max-w-[85%] ${
                     message.isBot 
-                      ? "bg-gray-200 text-gray-800 rounded-tl-none" 
-                      : "bg-primary text-white rounded-tr-none"
+                      ? "bg-gray-200 text-gray-800 rounded-tl-none animate-slide-in-left" 
+                      : "bg-primary text-white rounded-tr-none animate-slide-in-right"
                   }`}
                 >
                   {message.text}
@@ -189,12 +202,12 @@ const ChatBot: React.FC<ChatBotProps> = ({ onFormFieldChange }) => {
             
             {/* Options buttons */}
             {isOpen && currentStep < steps.length && steps[currentStep].options && (
-              <div className="mt-2 space-y-2">
+              <div className="mt-2 flex flex-wrap">
                 {steps[currentStep].options?.map((option, index) => (
                   <button
                     key={index}
                     onClick={() => handleOptionClick(option)}
-                    className="bg-white text-gray-800 py-2 px-4 rounded-full border border-gray-300 text-sm hover:bg-gray-100 mr-2 mb-2 transition-colors"
+                    className="bg-white text-gray-800 py-2 px-4 rounded-full border border-gray-300 text-sm hover:bg-gray-100 mr-2 mb-2 transition-colors shadow-sm animate-fade-in"
                   >
                     {option}
                   </button>
@@ -226,7 +239,8 @@ const ChatBot: React.FC<ChatBotProps> = ({ onFormFieldChange }) => {
       
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-primary hover:bg-primary/90 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg transition-transform hover:scale-110"
+        className="bg-primary hover:bg-primary/90 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-xl transition-transform hover:scale-110 animate-pulse-slow"
+        aria-label="Open chat assistance"
       >
         <i className={`fas ${isOpen ? 'fa-times' : 'fa-comment-dots'} text-xl`}></i>
       </button>
