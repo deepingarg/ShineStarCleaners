@@ -96,25 +96,14 @@ const About: React.FC = () => {
         
         <div className="flex flex-col lg:flex-row items-center bg-white rounded-2xl shadow-xl overflow-hidden">
           <div className="lg:w-1/2 relative">
-            <img 
-              src="https://images.unsplash.com/photo-1627905646269-7f034dcc7987?auto=format&fit=crop&w=800&h=600" 
-              alt="Professional cleaning team" 
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/60 to-primary/20 flex items-center justify-center">
-              <a 
-                href="#contact" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white text-3xl hover:bg-white/30 transition-all"
-              >
-                <i className="fas fa-play"></i>
-              </a>
+            <div className="bg-gradient-to-r from-primary/30 to-primary/10 h-full w-full p-8 flex items-center justify-center">
+              <div className="bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-lg text-center">
+                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center text-primary text-3xl mx-auto mb-4">
+                  <i className="fas fa-star"></i>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Premium Quality</h3>
+                <p className="text-gray-700">Our commitment to excellence ensures spotless results every time.</p>
+              </div>
             </div>
           </div>
           

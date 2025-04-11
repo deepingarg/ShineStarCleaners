@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
       {/* Full-screen background image with gradient overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1603712698128-8975defca0f9?auto=format&fit=cover&w=2000&h=1200" 
+          src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=cover&w=2000&h=1200" 
           alt="Professional cleaning service" 
           className="w-full h-full object-cover"
         />

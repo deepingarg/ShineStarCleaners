@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,10 +19,29 @@ const ContactForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
+  // Get form data from ChatBot (stored in localStorage)
+  useEffect(() => {
+    const chatbotData = localStorage.getItem('chatbot_form_data');
+    if (chatbotData) {
+      try {
+        const parsedData = JSON.parse(chatbotData);
+        // Pre-fill form fields with data from chatbot
+        Object.entries(parsedData).forEach(([field, value]) => {
+          if (value && typeof value === 'string') {
+            setValue(field as any, value);
+          }
+        });
+      } catch (error) {
+        console.error("Error parsing chatbot data:", error);
+      }
+    }
+  }, []);
+
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors }
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),

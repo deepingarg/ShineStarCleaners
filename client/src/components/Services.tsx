@@ -63,55 +63,55 @@ const Services: React.FC = () => {
       icon: "fas fa-building",
       title: "Office Cleaning",
       description: "Professional cleaning services for offices of all sizes. Keep your workspace pristine and create a healthier environment for your team.",
-      image: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=800&h=600"
+      image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&h=600"
     },
     {
       icon: "fas fa-couch",
       title: "Carpet Cleaning",
       description: "Deep carpet cleaning that removes stains, allergens, and odors. Extend the life of your carpets with our professional service.",
-      image: "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=800&h=600"
+      image: "https://images.unsplash.com/photo-1631501158226-1db81e7db208?auto=format&fit=crop&w=800&h=600"
     },
     {
       icon: "fas fa-home",
       title: "Residential Cleaning",
       description: "Comprehensive home cleaning services that keep your living space spotless. Regular or one-off cleaning options available.",
-      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&h=600"
+      image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=800&h=600"
     },
     {
       icon: "fas fa-broom",
       title: "Deep Cleaning",
       description: "Thorough cleaning services that target hidden dirt and grime. Perfect for seasonal cleaning or before/after moving.",
-      image: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=800&h=600"
+      image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=800&h=600"
     },
     {
       icon: "fas fa-window-maximize",
       title: "Window Cleaning",
       description: "Professional window cleaning for streak-free, crystal clear results. Interior and exterior services for homes and businesses.",
-      image: "https://images.unsplash.com/photo-1527689638836-411945a2b57c?auto=format&fit=crop&w=800&h=600"
+      image: "https://images.unsplash.com/photo-1596204976717-1a9ff47f74ef?auto=format&fit=crop&w=800&h=600"
     },
     {
       icon: "fas fa-sink",
       title: "Kitchen & Bathroom",
       description: "Specialized cleaning for the most demanding areas of your home. Eliminate grime, mold, and bacteria for a hygienic environment.",
-      image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&h=600"
+      image: "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&w=800&h=600"
     },
     {
       icon: "fas fa-tint",
       title: "Pressure Washing",
       description: "Restore driveways, decks, and exterior surfaces to their original condition with our powerful pressure washing service.",
-      image: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=800&h=600"
+      image: "https://images.unsplash.com/photo-1551448215-25d19f16f3b8?auto=format&fit=crop&w=800&h=600"
     },
     {
       icon: "fas fa-trash",
       title: "Rubbish Removal",
       description: "Efficient waste collection and disposal services for homes and businesses. We ensure proper recycling and environmentally friendly practices.",
-      image: "https://images.unsplash.com/photo-1610555356070-d0efb6505f81?auto=format&fit=crop&w=800&h=600"
+      image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=800&h=600"
     },
     {
       icon: "fas fa-building",
       title: "Apartment Cleaning",
       description: "Specialized cleaning services for apartments and units. Perfect for end-of-lease cleaning or regular maintenance.",
-      image: "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=800&h=600"
+      image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=800&h=600"
     }
   ];
 
